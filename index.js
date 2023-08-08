@@ -1,7 +1,7 @@
 //  creating the environment
     // npm init -y (says yes to all ?s )
     // npm i express
-    // touch index.js
+    // touch index.js .gitignore (for node_modules)
     // code .
 
     // npm i nodemon ( for auto refreshing )
@@ -18,15 +18,19 @@ const shoppingList = [ "hats", "glasses", "shirts", "pants", "socks", "shoes", "
 
 
 // MIDDLE WARE FOR VIEWS ------------------------------------------------
-    // npm i ecpress-react-views 
+    // npm i express-react-views 
     // which i dont think we need since we are sending variables directly from this file and not components in a views folder
 app.set("view engine", "jsx")
 app.engine( "jsx", require("express-react-views").createEngine() )
 
 
 // ROUTES ----------------------------------------------------------------
-app.get('/:indexOfShoppinListArray', ( req, res ) => {
-    res.send(shoppingList[req.params.indexOfShoppinListArray])
+app.get('/:indexOfShoppingListArray', ( req, res ) => {
+    if(shoppingList[req.params.indexOfShoppingListArray]){
+        res.send(`<h1>${shoppingList[req.params.indexOfShoppingListArray]}</h1>`)
+    } else {
+        res.send(` <h1 style="font-size:20px"> Shopping List doesn't have <span style="font-size: 40px; color:red">${req.params.indexOfShoppingListArray}</span> items </h1> `)
+    }
 })
 
 
