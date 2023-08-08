@@ -19,7 +19,7 @@ const shoppingList = [ "hats", "glasses", "shirts", "pants", "socks", "shoes", "
 
 // MIDDLE WARE FOR VIEWS ------------------------------------------------
     // npm i ecpress-react-views 
-    // which i dont think we need since we are sending variables directly form this file and not components in a views folder
+    // which i dont think we need since we are sending variables directly from this file and not components in a views folder
 app.set("view engine", "jsx")
 app.engine( "jsx", require("express-react-views").createEngine() )
 
